@@ -95,6 +95,10 @@ namespace labb3
             {
                 label3.Text = $"число {number1Text} = {number2Text}";
             }
+            else
+            {
+                label3.Text = $"число {number1Text} < {number2Text}";
+            }
         }
     }
 }
