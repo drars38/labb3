@@ -105,6 +105,70 @@ namespace labb3
         {
 
         }
+        // Обработчик события KeyPress для textField1
+        private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Если нажата клавиша Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Переводим фокус на textField2
+                comboBox1.Focus();
+            }
+        }
+        private void ComboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Если нажата клавиша Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Переводим фокус на textField2
+                textBox2.Focus();
+            }
+        }
+        private void TextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Если нажата клавиша Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Переводим фокус на textField2
+                comboBox2.Focus();
+            }
+        }
+        private void ComboBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Если нажата клавиша Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Переводим фокус на textField2
+                button1.Focus();
+            }
+        }
+        private void TextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Если нажата клавиша Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Переводим фокус на textField2
+                comboBox3.Focus();
+            }
+        }
+        private void ComboBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Если нажата клавиша Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Переводим фокус на textField2
+                comboBox4.Focus();
+            }
+        }
+        private void ComboBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Если нажата клавиша Enter
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Переводим фокус на textField2
+                button5.Focus();
+            }
+        }
     }
 }
 namespace CustomNumberSystem
