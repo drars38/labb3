@@ -1,6 +1,6 @@
 using CustomNumberSystem;
 
-namespace labb3
+namespace labb3  
 {
     public partial class Form1 : Form
     {
@@ -31,7 +31,7 @@ namespace labb3
             CustomNumber num1 = new CustomNumber(number1Text, system1);
             CustomNumber num2 = new CustomNumber(number2Text, system2);
             // Выполняем операции
-            CustomNumber sum = num1.Add(num2);
+            CustomNumber sum = num1 + num2;
             label3.Text = $"Сумма: {sum.GetValue()}";
         }
 
@@ -46,11 +46,11 @@ namespace labb3
             CustomNumber num1 = new CustomNumber(number1Text, system1);
             CustomNumber num2 = new CustomNumber(number2Text, system2);
             // Выполняем операции
-            CustomNumber sum = num1.Subtract(num2);
+            CustomNumber sum = num1-num2;
             label3.Text = $"Разница: {sum.GetValue()}";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) 
         {
             string number1Text = textBox1.Text;
             string number2Text = textBox2.Text;
@@ -61,7 +61,7 @@ namespace labb3
             CustomNumber num1 = new CustomNumber(number1Text, system1);
             CustomNumber num2 = new CustomNumber(number2Text, system2);
             // Выполняем операции
-            CustomNumber sum = num1.Multiply(num2);
+            CustomNumber sum = num1*num2;
             label3.Text = $"Произведение: {sum.GetValue()}";
         }
 
@@ -87,11 +87,11 @@ namespace labb3
             // Создаем объекты CustomNumber
             CustomNumber num1 = new CustomNumber(number1Text, system1);
             CustomNumber num2 = new CustomNumber(number2Text, system2);
-            if (num1.IsGreaterThan(num2))
+            if (num1>num2)
             {
                 label3.Text = $"число {number1Text} > {number2Text}";
             }
-            else if(num1.Equals(num2))
+            else if(num1==num2)
             {
                 label3.Text = $"число {number1Text} = {number2Text}";
             }
@@ -99,6 +99,11 @@ namespace labb3
             {
                 label3.Text = $"число {number1Text} < {number2Text}";
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
@@ -123,60 +128,49 @@ namespace CustomNumberSystem
             _numberSystem = numberSystem;
         }
 
-        public CustomNumber Add(CustomNumber other)
+        public static CustomNumber operator +(CustomNumber num1, CustomNumber num2)
         {
-            // Convert both numbers to decimal
-            int thisDecimal = ConvertToDecimal();
-            int otherDecimal = other.ConvertToDecimal();
-
-            // Add and convert result back to original number system
-            int resultDecimal = thisDecimal + otherDecimal;
-            return new CustomNumber(ConvertFromDecimal(resultDecimal), _numberSystem);
+            // Конвертируем оба числа в десятичную систему, выполняем сложение и конвертируем результат обратно
+            int resultDecimal = num1.ConvertToDecimal() + num2.ConvertToDecimal();
+            return new CustomNumber(num1.ConvertFromDecimal(resultDecimal), num1._numberSystem);
         }
 
-        public CustomNumber Subtract(CustomNumber other)
+        public static CustomNumber operator -(CustomNumber num1, CustomNumber num2)
         {
-            // Convert both numbers to decimal
-            int thisDecimal = ConvertToDecimal();
-            int otherDecimal = other.ConvertToDecimal();
-
-            // Subtract and convert result back to original number system
-            int resultDecimal = thisDecimal - otherDecimal;
-            return new CustomNumber(ConvertFromDecimal(resultDecimal), _numberSystem);
+            // Конвертируем оба числа в десятичную систему, выполняем вычитание и конвертируем результат обратно
+            int resultDecimal = num1.ConvertToDecimal() - num2.ConvertToDecimal();
+            return new CustomNumber(num1.ConvertFromDecimal(resultDecimal), num1._numberSystem);
         }
 
-        public CustomNumber Multiply(CustomNumber other)
+        public static CustomNumber operator *(CustomNumber num1, CustomNumber num2)
         {
-            // Convert both numbers to decimal
-            int thisDecimal = ConvertToDecimal();
-            int otherDecimal = other.ConvertToDecimal();
-
-            // Multiply and convert result back to original number system
-            int resultDecimal = thisDecimal * otherDecimal;
-            return new CustomNumber(ConvertFromDecimal(resultDecimal), _numberSystem);
+            // Конвертируем оба числа в десятичную систему, выполняем умножение и конвертируем результат обратно
+            int resultDecimal = num1.ConvertToDecimal() * num2.ConvertToDecimal();
+            return new CustomNumber(num1.ConvertFromDecimal(resultDecimal), num1._numberSystem);
         }
 
-        public bool IsGreaterThan(CustomNumber other)
+        public static bool operator >(CustomNumber num1, CustomNumber num2)
         {
-            // Convert both numbers to decimal for comparison
-            int thisDecimal = ConvertToDecimal();
-            int otherDecimal = other.ConvertToDecimal();
-
-            return thisDecimal > otherDecimal;
+            // Сравниваем числа в десятичной системе
+            return num1.ConvertToDecimal() > num2.ConvertToDecimal();
         }
-        public bool Equals(CustomNumber other)
+
+        public static bool operator <(CustomNumber num1, CustomNumber num2)
         {
-            // Convert both numbers to decimal for comparison
-            int thisDecimal = ConvertToDecimal();
-            int otherDecimal = other.ConvertToDecimal();
-            if (thisDecimal == otherDecimal)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // Сравниваем числа в десятичной системе
+            return num1.ConvertToDecimal() < num2.ConvertToDecimal();
+        }
+
+        public static bool operator ==(CustomNumber num1, CustomNumber num2)
+        {
+            // Сравниваем числа в десятичной системе
+            return num1.ConvertToDecimal() == num2.ConvertToDecimal();
+        }
+
+        public static bool operator !=(CustomNumber num1, CustomNumber num2)
+        {
+            // Сравниваем числа в десятичной системе
+            return num1.ConvertToDecimal() != num2.ConvertToDecimal();
         }
 
 
